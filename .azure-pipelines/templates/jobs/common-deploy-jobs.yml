@@ -69,7 +69,7 @@ jobs:
           set -e
           export SNAPCRAFT_STORE_CREDENTIALS=$(cat "$(snapcraftCfg.secureFilePath)")
           for SNAP_FILE in snap/*.snap; do
-            tools/retry.sh eval snapcraft upload --release=${{ parameters.snapReleaseChannel }} "${SNAP_FILE}"
+            tools/retry.sh eval snapcraft upload --verbosity trace --release=${{ parameters.snapReleaseChannel }} "${SNAP_FILE}"
           done
         displayName: Publish to Snap store
   # The credentials used in the following jobs are for the shared
